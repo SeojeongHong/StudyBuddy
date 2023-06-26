@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -11,9 +12,12 @@ import java.util.List;
 public class RoomService {
     private final RoomRepository roomRepository;
 
+    //스터디룸 목록 조회
     public List<Room> getList() {
         return this.roomRepository.findAll();
     }
+
+    public Optional<Room> getRoom(Integer roomId){return this.roomRepository.findById(roomId);};
 
     //스터디룸 생성
     public void create(String roomName, String roomContent, Integer maximum) {

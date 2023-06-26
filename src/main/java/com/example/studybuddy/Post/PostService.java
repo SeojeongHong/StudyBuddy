@@ -15,6 +15,7 @@ public class PostService {
         return this.postRepository.findAll();
     }
 
+    //게시글 작성
     public void create(String subject, String content) {
         Post q = new Post();
         q.setSubject(subject);

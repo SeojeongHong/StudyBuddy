@@ -24,7 +24,7 @@ public class MainController {
     public String write() {
         return "write";
     }
-    @ResponseBody
+
     @GetMapping("/mystudy")
     public String mystudy() {
         return "mystudy";

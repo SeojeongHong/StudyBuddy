@@ -1,0 +1,23 @@
+<header th:fragment="headerFragment" class="p-3 text-bg-dark">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+      <img src="/images/logo_whtie.png" width="30px" style="padding-right: 7px;">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+         style="padding-right: 30px;">
+        StudyBuddy
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 text-white">홈</a></li>
+        <li><a href="/post/list" class="nav-link px-2 text-white">모집게시판</a></li>
+        <li><a href="/mystudy" class="nav-link px-2 text-white">나의스터디</a></li>
+      </ul>
+      <div class="text-end">
+        <button type="button" class="btn btn-secondary me-2"><a href="/login" style="color:#ffffff; text-decoration:none;">로그인</a></button>
+        <button type="button" class="btn btn-primary"><a href="/join" style="color:#ffffff; text-decoration:none;">회원가입</a></button>
+      </div>
+
+    </div>
+  </div>
+</header>

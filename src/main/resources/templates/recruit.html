@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  list html
+<html layout:decorate="~{layout}">
+<div layout:fragment="content">
   <table>
       <thead>
       <tr>
@@ -21,5 +15,5 @@
       </tbody>
   </table>
   <a th:href="@{/write}" class="btn btn-primary">질문 등록하기</a>
-</body>
+</div>
 </html>

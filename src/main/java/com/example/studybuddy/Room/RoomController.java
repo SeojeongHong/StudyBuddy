@@ -21,20 +21,20 @@ public class RoomController {
     public String create() {
         return "makeroom";
     }
-    //모든 게시글 조회
-    @GetMapping("/room/list")
+    @GetMapping("/mystudy")
     public  String list(Model model){
         List<Room> roomList = this.roomService.getList();
         model.addAttribute("roomList", roomList);
-        return "room_list";
+        return "mystudy";
     }
+
     @PostMapping("/room/create")
     public String roomCreate(@Valid RoomForm roomForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "room_form";
         }
         this.roomService.create(roomForm.getRoomName(), roomForm.getRoomContent());
-        return "redirect:/room/list";
+        return "redirect:/mystudy";
     }
 
 }

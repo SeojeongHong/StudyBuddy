@@ -65,7 +65,28 @@
 
     <!--사이드-->
     <div class="container ms-3 mt-5" id="main">
-        <!-- 스터디룸 목록 -->
+        <h2>나의 스터디</h2>
+        <hr>
+
+        <!-- 이부분에 스터디 리스트 표시 -->
+
+        <div class="container">
+            <table>
+                <thead>
+                <tr>
+                    <th>스터디룸 이름</th>
+                    <th>설명</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="room : ${roomList}">
+                    <td th:text="${room.roomName}"></td>
+                    <td th:text="${room.roomContent}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 <!--jQuery-->

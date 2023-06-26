@@ -25,11 +25,6 @@ public class MainController {
         return "write";
     }
 
-    @GetMapping("/mystudy")
-    public String mystudy() {
-        return "mystudy";
-    }
-
     @ResponseBody
     @GetMapping("/login")
     public String login() {

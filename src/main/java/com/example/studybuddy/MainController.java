@@ -18,7 +18,7 @@ public class MainController {
     public  String list(Model model){
         List<Post> postList = this.postService.getList();
         model.addAttribute("postList", postList);
-        return "post_list";
+        return "recruit";
     }
     @GetMapping("/write")
     public String write() {

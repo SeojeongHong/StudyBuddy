@@ -20,7 +20,7 @@ public class PostController {
     public  String list(Model model){
         List<Post> postList = this.postService.getList();
         model.addAttribute("postList", postList);
-        return "post_list";
+        return "recruit";
     }
     //게시글 작성
     @PostMapping("/post/create")

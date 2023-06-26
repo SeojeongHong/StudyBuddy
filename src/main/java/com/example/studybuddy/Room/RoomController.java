@@ -17,10 +17,7 @@ import java.util.List;
 public class RoomController {
     private final RoomService roomService;
 
-    @GetMapping("/create")
-    public String create() {
-        return "makeroom";
-    }
+    //나의 스터디 페이지
     @GetMapping("/mystudy")
     public  String list(Model model){
         List<Room> roomList = this.roomService.getList();
@@ -28,12 +25,17 @@ public class RoomController {
         return "mystudy";
     }
 
+    //스터디룸 생성
+    @GetMapping("/create")
+    public String create() {
+        return "makeroom";
+    }
     @PostMapping("/room/create")
     public String roomCreate(@Valid RoomForm roomForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "room_form";
         }
-        this.roomService.create(roomForm.getRoomName(), roomForm.getRoomContent());
+        this.roomService.create(roomForm.getRoomName(), roomForm.getRoomContent(), roomForm.getMaximum());
         return "redirect:/mystudy";
     }
 

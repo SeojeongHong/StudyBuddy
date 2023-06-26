@@ -20,4 +20,7 @@ public class Room {
     @Column(columnDefinition = "TEXT")
     private String roomContent;
 
+    @Column
+    private Integer maximum;
+
 }

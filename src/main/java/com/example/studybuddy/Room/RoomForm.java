@@ -15,4 +15,6 @@ public class RoomForm {
 
     @NotEmpty(message="스터디룸 소개를 입력하세요")
     private String roomContent;
+    
+    private Integer maximum;
 }

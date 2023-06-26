@@ -16,11 +16,12 @@ public class RoomService {
     }
 
     //스터디룸 생성
-    public void create(String roomName, String roomContent) {
+    public void create(String roomName, String roomContent, Integer maximum) {
         Room r = new Room();
         r.setRoomId((int)(Math.random() * 899999) + 100000);    //랜덤 ID부여
         r.setRoomName(roomName);
         r.setRoomContent(roomContent);
+        r.setMaximum(maximum);
         this.roomRepository.save(r);
     }
 }

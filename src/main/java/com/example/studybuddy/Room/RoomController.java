@@ -26,7 +26,7 @@ public class RoomController {
     public  String list(Model model){
         List<Room> roomList = this.roomService.getList();
         model.addAttribute("roomList", roomList);
-        return "post_list";
+        return "room_list";
     }
     @PostMapping("/room/create")
     public String roomCreate(@Valid RoomForm roomForm, BindingResult bindingResult) {

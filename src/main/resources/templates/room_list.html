@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  list html
+  <table>
+      <thead>
+      <tr>
+          <th>스터디룸 이름</th>
+          <th>설명</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="room : ${roomList}">
+          <td th:text="${room.roomName}"></td>
+          <td th:text="${room.roomContent}"></td>
+      </tr>
+      </tbody>
+  </table>
+  <a th:href="@{/write}" class="btn btn-primary">질문 등록하기</a>
+</body>
+</html>

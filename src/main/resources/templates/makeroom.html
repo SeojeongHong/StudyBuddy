@@ -24,17 +24,16 @@
     <header class="p-3 text-bg-dark">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <img src="wig_whtie.png" width="30px" style="padding-right: 7px;">
+            <img src="/images/logo_whtie.png" width="30px" style="padding-right: 7px;">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
                 style="padding-right: 30px;">
                 StudyBuddy
             </a>
-      </header>
+    </header>
 
 
   <main class="container mt-5">
     <section>
-      <h2 style="font-size: 25pt; font-weight: bold;"><img src="wig_blue.png" width="50px" style="padding-right: 7px;">StudyBuddy</h2>
       <br>
       <p style="font-size: 20pt; font-weight: bold;">스터디 생성</p>
       <br>
@@ -43,8 +42,6 @@
     <section>
         <form th:action="@{/room/create}" method="post">
             <div class="post-content">
-                <h3> 스터디룸 생성 </h3>
-                <hr>
                 <p>스터디룸 이름</p>
                 <input type="text" class="form-control" placeholder="스터디 이름 입력" name="roomName" id="roomName" style="width: 400px;">
                 <br>

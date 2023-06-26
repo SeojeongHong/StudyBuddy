@@ -18,7 +18,7 @@ public class RoomService {
     //스터디룸 생성
     public void create(String roomName, String roomContent) {
         Room r = new Room();
-        r.setRoomId(1000);
+        r.setRoomId((int)(Math.random() * 899999) + 100000);    //랜덤 ID부여
         r.setRoomName(roomName);
         r.setRoomContent(roomContent);
         this.roomRepository.save(r);

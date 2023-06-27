@@ -39,6 +39,7 @@ public class RoomController {
             Room room = optionalRoom.get();
             model.addAttribute("roomName", room.getRoomName());
             model.addAttribute("roomContent", room.getRoomContent());
+            model.addAttribute("roomId", room.getRoomId());
             return "roomMain";
         } else {
             return "notFoundPage";

@@ -1,5 +1,7 @@
 package com.example.studybuddy.Room;
 
+import com.example.studybuddy.Enrol.Enrol;
+import com.example.studybuddy.Enrol.EnrolRepository;
 import com.example.studybuddy.User.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import java.util.Optional;
 @Service
 public class RoomService {
     private final RoomRepository roomRepository;
+    private final EnrolRepository enrolRepository;
 
     //스터디룸 목록 조회
     public List<Room> getList() {
@@ -30,5 +33,12 @@ public class RoomService {
         r.setMaximum(maximum);
         r.setHostId(hostId);
         this.roomRepository.save(r);
+
+        //룸 생성 - 호스트 권한 1
+        Enrol e = new Enrol();
+        e.setRoomId(r.getRoomId());
+        e.setUserId(hostId);
+        e.setAuth(1);
+        this.enrolRepository.save(e);
     }
 }

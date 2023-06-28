@@ -29,4 +29,8 @@ public class MainController {
     public String join() {
         return "join";
     }
+
+    @ResponseBody
+    @GetMapping("/mypage")
+    public String mypage(){return "mypage";}
 }

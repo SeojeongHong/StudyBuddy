@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class UserSecurityService implements UserDetailsService {
 
     private final UserRepository userRepository;
-
+    //db에서 유저 조회
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<SiteUser> _siteUser = this.userRepository.findByusername(username);

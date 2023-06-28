@@ -1,5 +1,6 @@
 package com.example.studybuddy.Room;
 
+import com.example.studybuddy.Enrol.Enrol;
 import com.example.studybuddy.Enrol.EnrolService;
 import com.example.studybuddy.Post.Post;
 import com.example.studybuddy.Post.PostForm;
@@ -28,6 +29,8 @@ public class RoomController {
     @Autowired
     private final UserService userService;
     @Autowired
+    private final EnrolService enrolService;
+    @Autowired
     private final RoomRepository roomRepository;
 
     //나의 스터디 페이지
@@ -39,13 +42,17 @@ public class RoomController {
     }
 
     @GetMapping("/studyroom/{id}")
-    public String getStudyRoom(@PathVariable("id") int roomId, Model model) {
+    public String getStudyRoom(@PathVariable("id") int roomId, Model model, Principal principal) {
+        String siteUser = this.userService.getUser(principal.getName());
         Optional<Room> optionalRoom = this.roomService.getRoom(roomId);
-        if (optionalRoom.isPresent()) {
+        Optional<Enrol> optionalEnrol = this.enrolService.getAuth(roomId,siteUser);
+        if (optionalRoom.isPresent() && optionalEnrol.isPresent()) {
             Room room = optionalRoom.get();
+            Enrol enrol = optionalEnrol.get();
             model.addAttribute("roomName", room.getRoomName());
             model.addAttribute("roomContent", room.getRoomContent());
             model.addAttribute("roomId", room.getRoomId());
+            model.addAttribute("roomAuth", enrol.getAuth());
             return "roomMain";
         } else {
             return "notFoundPage";

@@ -25,6 +25,7 @@
     <div class="bg-light p-5 rounded mt-3">
       <h2 style="text-align: left;" th:text="${roomName}"> 스터디룸 이름 </h2>
       <br>
+      <p style="white-space: pre-line;" th:text="|권한:${roomAuth}|">스터디룸 권한</p>
       <p style="white-space: pre-line;" th:text="${roomContent}">스터디룸 소개</p>
     </div>
     <br>

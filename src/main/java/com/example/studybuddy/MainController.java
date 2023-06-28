@@ -31,7 +31,6 @@ public class MainController {
         return "login";
     }
 
-    @ResponseBody
     @GetMapping("/join")
     public String join() {
         return "join";

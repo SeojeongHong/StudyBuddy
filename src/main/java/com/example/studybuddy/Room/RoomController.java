@@ -2,6 +2,8 @@ package com.example.studybuddy.Room;
 
 import com.example.studybuddy.Post.Post;
 import com.example.studybuddy.Post.PostForm;
+import com.example.studybuddy.User.SiteUser;
+import com.example.studybuddy.User.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +24,8 @@ import java.util.Optional;
 public class RoomController {
     @Autowired
     private final RoomService roomService;
+    @Autowired
+    private final UserService userService;
     @Autowired
     private final RoomRepository roomRepository;
 
@@ -53,11 +58,13 @@ public class RoomController {
         return "makeroom";
     }
     @PostMapping("/room/create")
-    public String roomCreate(@Valid RoomForm roomForm, BindingResult bindingResult) {
+    public String roomCreate(@Valid RoomForm roomForm, BindingResult bindingResult, Principal principal) {
+        String siteUser = this.userService.getUser(principal.getName());
+
         if (bindingResult.hasErrors()) {
             return "room_form";
         }
-        this.roomService.create(roomForm.getRoomName(), roomForm.getRoomContent(), roomForm.getMaximum());
+        this.roomService.create(roomForm.getRoomName(), roomForm.getRoomContent(), roomForm.getMaximum(), siteUser);
         return "redirect:/mystudy";
     }
 

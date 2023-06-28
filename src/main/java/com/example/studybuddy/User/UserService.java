@@ -1,10 +1,14 @@
 package com.example.studybuddy.User;
 
 
+import com.example.studybuddy.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class UserService {
@@ -17,5 +21,17 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(password));
         this.userRepository.save(user);
         return user;
+    }
+
+    //로그인 유저 정보
+    public String getUser(String username) {
+        Optional<SiteUser> siteUser = this.userRepository.findByusername(username);
+        if (siteUser.isPresent()) {
+            return siteUser.get().getUsername();
+        }
+        else {
+            throw new DataNotFoundException("siteuser not found");
+        }
+
     }
 }

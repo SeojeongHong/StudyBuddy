@@ -1,10 +1,12 @@
 package com.example.studybuddy.Room;
 
+import com.example.studybuddy.User.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 
 
 @RequiredArgsConstructor
@@ -20,12 +22,13 @@ public class RoomService {
     public Optional<Room> getRoom(Integer roomId){return this.roomRepository.findById(roomId);};
 
     //스터디룸 생성
-    public void create(String roomName, String roomContent, Integer maximum) {
+    public void create(String roomName, String roomContent, Integer maximum, String hostId) {
         Room r = new Room();
         r.setRoomId((int)(Math.random() * 899999) + 100000);    //랜덤 ID부여
         r.setRoomName(roomName);
         r.setRoomContent(roomContent);
         r.setMaximum(maximum);
+        r.setHostId(hostId);
         this.roomRepository.save(r);
     }
 }

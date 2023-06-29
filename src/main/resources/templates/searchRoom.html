@@ -2,4 +2,8 @@
 <div layout:fragment="content">
 <p th:text="${roomName}">
 <p th:text="${roomContent}">
-</p></div></html>
+</p>
+    <form th:action="@{/joinRoom/{id}(id = ${roomId})}" method="post">
+        <button type="submit" class="btn btn-primary">가입하기</button>
+    </form>
+</div></html>

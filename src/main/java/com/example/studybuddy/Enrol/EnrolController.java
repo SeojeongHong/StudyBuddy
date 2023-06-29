@@ -25,6 +25,6 @@ public class EnrolController {
     public String joinRoom(@PathVariable("id") int roomId,Principal principal) {
         String siteUser = this.userService.getUser(principal.getName());
         this.enrolService.joinRoom(roomId, siteUser);
-        return "redirect:/mystudy";
+        return "redirect:/searchRoom/{id}";
     }
 }

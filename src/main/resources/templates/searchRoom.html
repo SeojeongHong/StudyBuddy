@@ -1,9 +1,12 @@
-<html layout:decorate="~{layout}" >
-<div layout:fragment="content">
 <p th:text="${roomName}">
 <p th:text="${roomContent}">
 </p>
     <form th:action="@{/joinRoom/{id}(id = ${roomId})}" method="post">
         <button type="submit" class="btn btn-primary">가입하기</button>
     </form>
-</div></html>
+<button  class="btn btn-primary" onclick="closePopup()">닫기</button>
+<script>
+    function closePopup() {
+        window.close();
+    }
+</script>

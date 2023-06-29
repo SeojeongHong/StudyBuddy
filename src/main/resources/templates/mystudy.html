@@ -56,7 +56,7 @@
 <script layout:fragment="script">
     function searchRoom() {
         var searchId = document.getElementById("searchId").value;
-        window.location.href = "/searchRoom/" + searchId;
+        window.open("/searchRoom/" + searchId, "searchRes", "width = 500, height = 500, top = 100, left = 200, location = no");
     }
 </script>
 </html>

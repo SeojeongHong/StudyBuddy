@@ -1,6 +1,5 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
-
 <div class="d-flex">
     <!-- 사이드바 -->
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; height: calc(100vh - 75px);">
@@ -16,8 +15,8 @@
                 <span class="fs-4">스터디룸ID로 찾기</span>
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="ID검색">
-                <button type="button" class="btn btn-primary">
+                <input type="text" class="form-control" id="searchId" placeholder="ID검색">
+                <button type="button" class="btn btn-primary" id="searchBtn" onclick="searchRoom()">
                     검색
                 </button>
             </div>
@@ -42,6 +41,7 @@
                     </div>
                     <div>
                         <p th:text="${room.roomContent}">스터디룸 설명</p>
+                        <a style="text-decoration: none; font-size:15pt" th:href="@{/searchRoom/{id}(id = ${room.roomId})}">검색</a>
                     </div>
                 </div>
             </div>
@@ -54,4 +54,10 @@
     </div>
 </div>
 </div>
+<script layout:fragment="script">
+    function searchRoom() {
+        var searchId = document.getElementById("searchId").value;
+        window.location.href = "/searchRoom/" + searchId;
+    }
+</script>
 </html>

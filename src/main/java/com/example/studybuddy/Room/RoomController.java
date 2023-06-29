@@ -59,6 +59,20 @@ public class RoomController {
         }
     }
 
+    @GetMapping("/searchRoom/{id}")
+    public String getRoomRes(@PathVariable("id") int roomId, Model model){
+        Optional<Room> optionalRoom = this.roomService.getRoom(roomId);
+        if (optionalRoom.isPresent()) {
+            Room room = optionalRoom.get();
+            model.addAttribute("roomName", room.getRoomName());
+            model.addAttribute("roomContent", room.getRoomContent());
+            model.addAttribute("roomId", room.getRoomId());
+            return "searchRoom";
+        } else {
+            return "notFoundPage";
+        }
+    }
+
 
     //스터디룸 생성
     @GetMapping("/create")

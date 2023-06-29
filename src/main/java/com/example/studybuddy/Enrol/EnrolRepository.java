@@ -7,6 +7,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface EnrolRepository extends JpaRepository<Enrol, Integer> {
+    //
     @Query("SELECT e FROM Enrol e WHERE e.roomId = :roomId AND e.userId = :siteUser")
     Optional<Enrol> getAuth(@Param("roomId") Integer roomId, @Param("siteUser") String siteUser);
+
+    boolean existsByRoomIdAndUserId(Integer roomId, String userId);
 }

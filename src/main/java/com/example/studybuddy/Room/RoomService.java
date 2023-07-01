@@ -22,7 +22,13 @@ public class RoomService {
         return this.roomRepository.findAll();
     }
 
+    //가입한 스터디룸 목록 조회
+    public List<Room> getMyList(String siteUser) {
+        return this.roomRepository.findMyRoom(siteUser);
+    }
+
     public Optional<Room> getRoom(Integer roomId){return this.roomRepository.findById(roomId);};
+
 
     //스터디룸 생성
     public void create(String roomName, String roomContent, Integer maximum, String hostId) {

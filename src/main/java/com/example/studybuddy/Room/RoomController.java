@@ -35,8 +35,9 @@ public class RoomController {
 
     //나의 스터디 페이지
     @GetMapping("/mystudy")
-    public  String list(Model model){
-        List<Room> roomList = this.roomService.getList();
+    public  String list(Model model, Principal principal){
+        String siteUser = this.userService.getUser(principal.getName());
+        List<Room> roomList = this.roomService.getMyList(siteUser);
         model.addAttribute("roomList", roomList);
         return "mystudy";
     }

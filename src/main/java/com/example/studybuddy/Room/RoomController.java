@@ -70,7 +70,7 @@ public class RoomController {
             model.addAttribute("roomId", room.getRoomId());
             return "searchRoom";
         } else {
-            return "notFoundPage";
+            return "notFoundRoom";
         }
     }
 

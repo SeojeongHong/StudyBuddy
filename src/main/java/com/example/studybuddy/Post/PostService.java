@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.time.LocalDateTime;
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class PostService {
@@ -23,4 +25,6 @@ public class PostService {
         q.setCreateDate(LocalDateTime.now());
         this.postRepository.save(q);
     }
+
+    public Optional<Post> getPost(int id) {return this.postRepository.findById(id);}
 }

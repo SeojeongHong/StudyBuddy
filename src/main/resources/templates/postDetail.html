@@ -1,0 +1,35 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content">
+
+
+
+<div class="d-flex">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; height: auto;">
+        <a href="recruitBBS.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none" style="padding: 20px;">
+            <span class="fs-4">모집게시판</span>
+        </a>
+    </div>
+
+    <!-- 사이드 바 옆 컨테이너 부분 -->
+    <div class="container ms-3 mt-5" id="main">
+
+        <div class="row">
+            <div class="post-content">
+                <h3 th:text="${postSubject}"> </h3>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <span>작성자:</span><span></span><span>작성일자:</span>
+                </div>
+                <hr>
+                <div style="min-height:150px; white-space: pre-line;" th:text="${postContent}">  <!-- 개행 유지 -->
+                </div>
+                <br>
+
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</html>

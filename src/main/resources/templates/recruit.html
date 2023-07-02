@@ -9,7 +9,7 @@
       </thead>
       <tbody>
       <tr th:each="post : ${postList}">
-          <td th:text="${post.subject}"></td>
+          <td><a th:href="@{/post/detail/{id}(id = ${post.id})}" th:text="${post.subject}"></a></td>
           <td th:text="${post.createDate}"></td>
       </tr>
       </tbody>

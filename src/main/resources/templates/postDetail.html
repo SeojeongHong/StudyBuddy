@@ -18,7 +18,9 @@
                 <h3 th:text="${postSubject}"> </h3>
                 <hr>
                 <div class="d-flex justify-content-between">
-                    <span>작성자:</span><span></span><span>작성일자:</span>
+                    <span th:text="|작성자:${postUserId}|"></span>
+                    <span></span>
+                    <span>작성일자:</span>
                 </div>
                 <hr>
                 <div style="min-height:150px; white-space: pre-line;" th:text="${postContent}">  <!-- 개행 유지 -->

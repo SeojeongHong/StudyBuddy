@@ -14,6 +14,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String userId;
+
     @Column(length = 200)
     private String subject;
 

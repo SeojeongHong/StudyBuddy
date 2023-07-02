@@ -18,8 +18,9 @@ public class PostService {
     }
 
     //게시글 작성
-    public void create(String subject, String content) {
+    public void create(String userId, String subject, String content) {
         Post q = new Post();
+        q.setUserId(userId);
         q.setSubject(subject);
         q.setContent(content);
         q.setCreateDate(LocalDateTime.now());

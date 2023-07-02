@@ -1,19 +1,42 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
-  <table>
-      <thead>
-      <tr>
-          <th>제목</th>
-          <th>작성일시</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="post : ${postList}">
-          <td><a th:href="@{/post/detail/{id}(id = ${post.id})}" th:text="${post.subject}"></a></td>
-          <td th:text="${post.createDate}"></td>
-      </tr>
-      </tbody>
-  </table>
-  <a th:href="@{/write}" class="btn btn-primary">질문 등록하기</a>
+
+    <div class="d-flex">
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; height: calc(100vh - 75px);">
+            <span class="fs-4">모집게시판</span>
+        </div>
+
+        <div class="container ms-3 mt-5" id="main">
+            <h2>모집게시판</h2>
+            <hr>
+            <!-- 이부분에 게시판 표시 -->
+
+            <div class="container">
+                <div class="row">
+                    <table class="table" style="text-align:center; border: 1px solid #dddddd">
+                        <thead>
+                        <tr>
+                            <th style="width: 50%; background-color: #eeeeee; text-align: center;">제목</th>
+                            <th style="width: 10%; background-color: #eeeeee; text-align: center;">작성자</th>
+                            <th style="width: 30%; background-color: #eeeeee; text-align: center;">작성일</th>
+                        </tr>
+                        </thead>
+                        <tbody id="post-list">
+                        <!-- 게시글이 들어갈 부분 -->
+                            <tr  th:each="post : ${postList}">
+                                <td><a th:href="@{/post/detail/{id}(id = ${post.id})}" th:text="${post.subject}"></a></td>
+                                <td th:text="${post.userId}"></td>
+                                <td th:text="${post.createDate}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-end" style="padding-top:10px">
+                        <a th:href="@{/write}" class="btn btn-primary" role="button">글쓰기</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
 </div>
 </html>

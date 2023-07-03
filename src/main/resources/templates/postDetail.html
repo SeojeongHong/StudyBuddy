@@ -26,7 +26,12 @@
                 <div style="min-height:150px; white-space: pre-line;" th:text="${postContent}">  <!-- 개행 유지 -->
                 </div>
                 <br>
-
+                <div class="my-3">
+                    <a th:href="@{|/post/modify/${postId}|}" class="btn btn-sm btn-outline-secondary"
+                       sec:authorize="isAuthenticated()"
+                       th:if="${postUserId != null and #authentication.getPrincipal().getUsername() == postUserId}"
+                       th:text="수정"></a>
+                </div>
                 <hr>
             </div>
         </div>

@@ -8,7 +8,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
@@ -37,6 +39,7 @@ public class PostController {
             model.addAttribute("postUserId", post.getUserId());
             model.addAttribute("postSubject", post.getSubject());
             model.addAttribute("postContent", post.getContent());
+            model.addAttribute("postId", post.getId());
             return "postDetail";
         } else {
             return "notFoundPage";
@@ -44,15 +47,29 @@ public class PostController {
     }
 
     //게시글 작성
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/post/create")
     public String postCreate(@Valid PostForm postForm, BindingResult bindingResult, Principal principal) {
         String siteUser = this.userService.getUser(principal.getName());
 
         if (bindingResult.hasErrors()) {
-            return "post_form";
+            return "write";
         }
         this.postService.create(siteUser, postForm.getSubject(), postForm.getContent());
         return "redirect:/post/list";
+    }
+
+    //게시글 수정
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/post/modify/{id}")
+    public String postModify(PostForm postForm, @PathVariable("id") Integer id, Principal principal) {
+        Optional<Post> post = this.postService.getPost(id);
+        if(!post.get().getUserId().equals(principal.getName())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
+        }
+        postForm.setSubject(post.get().getSubject());
+        postForm.setContent(post.get().getContent());
+        return "write";
     }
 
 }

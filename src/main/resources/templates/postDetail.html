@@ -31,6 +31,10 @@
                        sec:authorize="isAuthenticated()"
                        th:if="${postUserId != null and #authentication.getPrincipal().getUsername() == postUserId}"
                        th:text="수정"></a>
+                    <a th:href="@{|/post/delete/${postId}|}"
+                       class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
+                       th:if="${postUserId != null and #authentication.getPrincipal().getUsername() == postUserId}"
+                       th:text="삭제"></a>
                 </div>
                 <hr>
             </div>

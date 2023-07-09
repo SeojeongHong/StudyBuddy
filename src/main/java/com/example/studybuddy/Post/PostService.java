@@ -27,5 +27,16 @@ public class PostService {
         this.postRepository.save(q);
     }
 
+    //게시글 수정
+    public void modify(Post post, String subject, String content) {
+        post.setSubject(subject);
+        post.setContent(content);
+        this.postRepository.save(post);
+    }
     public Optional<Post> getPost(int id) {return this.postRepository.findById(id);}
+
+    //게시글 삭제
+    public void delete(Post post) {
+        this.postRepository.delete(post);
+    }
 }
